@@ -1,0 +1,20 @@
+* {
+  font-family: "Courier New", Courier, monospace;
+}
+
+.button {
+  width: 25vw;
+  height: 100px;
+  margin: 0;
+  padding: 0;
+  background-color: rgba(1, 1, 1, 1);
+}
+.button:active {
+  background-color: rgba(1, 1, 1, 0.5);
+}
+
+body {
+  display: flex;
+  gap: 1%;
+  justify-content: space-evenly;
+}
