@@ -1,44 +1,44 @@
 console.clear();
-// let audioContext = new AudioContext();
+let audioContext = new AudioContext();
 
-// async function loadAudioFile(url) {
-//   try {
-//     // Fetch audio file
-//     let response = await fetch(url);
+async function loadAudioFile(url) {
+  try {
+    // Fetch audio file
+    let response = await fetch(url);
 
-//     // Decode audio data
-//     let arrayBuffer = await response.arrayBuffer();
-//     let decodedAudioData = await audioContext.decodeAudioData(arrayBuffer);
-//     return decodedAudioData;
-//   } catch (error) {
-//     throw new Error("Error loading or decoding audio file: " + error);
-//   }
-// }
-// loadAudioFile("./assets/What can I do .wav")
-//   .then((decodedAudioData) => {
-//     // Create an empty AudioBuffer with the same parameters as the decoded audio data
-//     let audioBuffer = audioContext.createBuffer(
-//       decodedAudioData.numberOfChannels,
-//       decodedAudioData.length,
-//       decodedAudioData.sampleRate
-//     );
-//     console.log(audioBuffer);
-//     // Copy decoded audio data to the AudioBuffer
-//     for (
-//       let channel = 0;
-//       channel < decodedAudioData.numberOfChannels;
-//       channel++
-//     ) {
-//       let channelData = decodedAudioData.getChannelData(channel);
-//       audioBuffer.getChannelData(channel).set(channelData);
-//     }
+    // Decode audio data
+    let arrayBuffer = await response.arrayBuffer();
+    let decodedAudioData = await audioContext.decodeAudioData(arrayBuffer);
+    return decodedAudioData;
+  } catch (error) {
+    throw new Error("Error loading or decoding audio file: " + error);
+  }
+}
+loadAudioFile("./assets/What can I do .wav")
+  .then((decodedAudioData) => {
+    // Create an empty AudioBuffer with the same parameters as the decoded audio data
+    let audioBuffer = audioContext.createBuffer(
+      decodedAudioData.numberOfChannels,
+      decodedAudioData.length,
+      decodedAudioData.sampleRate
+    );
+    console.log(audioBuffer);
+    // Copy decoded audio data to the AudioBuffer
+    for (
+      let channel = 0;
+      channel < decodedAudioData.numberOfChannels;
+      channel++
+    ) {
+      let channelData = decodedAudioData.getChannelData(channel);
+      audioBuffer.getChannelData(channel).set(channelData);
+    }
 
-//     // Now you have the audio data stored in the audioBuffer
-//     // You can do further processing or play it back as needed
-//   })
-//   .catch((error) => {
-//     console.error(error.message);
-//   });
+    // Now you have the audio data stored in the audioBuffer
+    // You can do further processing or play it back as needed
+  })
+  .catch((error) => {
+    console.error(error.message);
+  });
 
 const audioElements = Array.from(document.querySelectorAll('[class="audio"]'));
 const buttons = Array.from(document.querySelectorAll('[class="button"]'));

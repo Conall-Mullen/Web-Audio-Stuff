@@ -7,35 +7,32 @@
   height: 100px;
   margin: 0;
   padding: 0;
-  background-color: rgba(1, 1, 1, 1);
+  background-color: rgba(197, 242, 239, 1);
+  border-radius: 25%;
 }
 .button:active {
-  background-color: rgba(1, 1, 1, 0.5);
+  background-color: rgba(197, 242, 239, 0.5);
 }
 
 .button-section {
   display: flex;
-  gap: 1%;
+  gap: 5%;
   justify-content: space-evenly;
-  margin: 2em;
+  margin: 6em;
 }
 
 .fader-section {
   display: flex;
   justify-content: space-evenly;
-  margin: 2em;
+  margin: auto;
 }
 
-.fader__volume::-webkit-slider-runnable-track {
+.fader__volume {
   -webkit-appearance: none; /* Override default look */
   appearance: none;
   margin: 0;
   padding: 0;
   background: #c5f2ef;
   width: 25vw;
-}
-.fader__volume::-webkit-slider-thumb {
-  -webkit-appearance: none; /* Override default look */
-  appearance: none;
-  background: #eb5c5c;
+  transform: rotate(270deg);
 }
