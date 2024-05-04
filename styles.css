@@ -13,8 +13,29 @@
   background-color: rgba(1, 1, 1, 0.5);
 }
 
-body {
+.button-section {
   display: flex;
   gap: 1%;
   justify-content: space-evenly;
+  margin: 2em;
+}
+
+.fader-section {
+  display: flex;
+  justify-content: space-evenly;
+  margin: 2em;
+}
+
+.fader__volume::-webkit-slider-runnable-track {
+  -webkit-appearance: none; /* Override default look */
+  appearance: none;
+  margin: 0;
+  padding: 0;
+  background: #c5f2ef;
+  width: 25vw;
+}
+.fader__volume::-webkit-slider-thumb {
+  -webkit-appearance: none; /* Override default look */
+  appearance: none;
+  background: #eb5c5c;
 }
