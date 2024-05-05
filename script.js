@@ -2,6 +2,7 @@ console.clear();
 const audioContext = new AudioContext();
 const audioFiles = [
   "samples/MR16_BD_02_T1S.wav",
+  "samples/MR16_Snr_T1S.wav",
   "samples/MR16_Cabasa_X1_st.wav",
   "samples/MR16_Clap_X1.wav",
   "samples/MR16_CongaHigh_T1S.wav",
@@ -12,7 +13,6 @@ const audioFiles = [
   "samples/MR16_HHo_T1A.wav",
   "samples/MR16_Ride_T1A.wav",
   "samples/MR16_Rim_T1A.wav",
-  "samples/MR16_Snr_T1S.wav",
   "samples/MR16_WoodBlock_C2S.wav",
   "assets/Guitar fill 3.wav",
   "assets/Piano Chord.wav",
@@ -23,11 +23,16 @@ const body = document.getElementsByTagName("body");
 for (let i = 0; i < audioFiles.length; i++) {
   const newSamplePad = document.createElement("section");
   newSamplePad.classList.add("button");
-  document.body.append(newSamplePad);
+  const newGainFader = document.createElement("input");
+  newGainFader.setAttribute("type", "range");
+  newGainFader.classList.add("fader");
+
+  document.body.append(newSamplePad, newGainFader);
 }
 
 const samplePads = Array.from(document.querySelectorAll(".button"));
-console.log(samplePads);
+const gainFaders = Array.from(document.querySelectorAll(".fader"));
+
 async function loadAudioFile(url) {
   try {
     // Fetch audio file
@@ -63,8 +68,11 @@ setUpSamples(audioFiles).then((response) => {
   samples = response;
 });
 
-for (let index = 0; index < samplePads.length; index++) {
+for (let index = 0; index < audioFiles.length; index++) {
   samplePads[index].addEventListener("click", () => {
     playAudio(samples[index], 0);
+  });
+  gainFaders[index].addEventListener("input", () => {
+    console.log((100 - gainFaders[index].value) / 100);
   });
 }
