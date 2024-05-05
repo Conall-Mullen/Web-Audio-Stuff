@@ -56,9 +56,9 @@ body {
 
 .fader::-webkit-slider-thumb {
   -webkit-appearance: none;
-  width: 2em;
-  height: 2em;
-  border-radius: 10px;
+  width: 1.75em;
+  height: 2.5em;
+  border-radius: 5px;
   background-color: #393939;
   overflow: visible;
   cursor: pointer;
