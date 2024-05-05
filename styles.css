@@ -41,47 +41,17 @@ body {
   -moz-box-shadow: inset 0 1px 0 #070606, inset 0 -3pxpx 0 #910000;
   box-shadow: inset 0 1px 0 #070606, inset 0 -3px 0 #910000;
 }
-/* .button:after {
-  content: "";
-  height: 100%;
-  width: 100%;
-  padding: 4px;
-  position: absolute;
-  bottom: -15px;
-  left: -4px;
-  z-index: -1;
-  background-color: #2b1800;
-  -webkit-border-radius: 5px;
-  -moz-border-radius: 5px;
-  border-radius: 5px;
-} */
-/* .button {
-  width: 100px;
-  height: 100px;
-  margin: 1em;
-  padding: 1%;
-  background-color: rgba(176, 176, 176, 1);
-  border-radius: 20%;
-  border: 2px solid #393939;
-  text-align: center;
-}
 
-.button:active {
-  background-color: rgba(176, 176, 176, 0.5);
-  width: 95px;
-  height: 95px;
-} */
 .fader {
   -webkit-appearance: none; /* Override default look */
   appearance: none;
   margin: 1em;
   padding: 2px;
   background: #b0b0b0;
-  width: 400px;
-  height: 0;
+  width: 0;
+  height: 250px;
   top: 10%;
-
-  border: 2px solid #393939;
+  writing-mode: vertical-lr;
 }
 
 .fader::-webkit-slider-thumb {
