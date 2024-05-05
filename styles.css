@@ -6,6 +6,7 @@ body {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   justify-items: center;
+  align-items: center;
 }
 .button {
   color: rgb(0, 0, 0);
@@ -43,22 +44,21 @@ body {
 }
 
 .fader {
-  -webkit-appearance: none; /* Override default look */
   appearance: none;
+  border-radius: 10px;
   margin: 1em;
   padding: 2px;
   background: #b0b0b0;
-  width: 0;
-  height: 250px;
-  top: 10%;
+  width: 5px;
+  height: 200px;
   writing-mode: vertical-lr;
 }
 
 .fader::-webkit-slider-thumb {
   -webkit-appearance: none;
-  width: 2em;
-  height: 1em;
-  border-radius: none;
+  width: 1.75em;
+  height: 2.5em;
+  border-radius: 5px;
   background-color: #393939;
   overflow: visible;
   cursor: pointer;
