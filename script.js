@@ -1,8 +1,7 @@
 console.clear();
-let audioContext = new AudioContext();
+const audioContext = new AudioContext();
 
 const audioFiles = [
-  // Array of audio file names
   "assets/Guitar fill 3.wav",
   "assets/Piano Chord.wav",
   "assets/Piano Chord 2.wav",
@@ -10,6 +9,10 @@ const audioFiles = [
 ];
 
 let audioBuffers = []; // Empty array for audio buffers
+
+/*------------------------
+Load files to audio buffer
+------------------------*/
 
 async function loadAudioFile(url) {
   // Declare function to load audio files
@@ -56,24 +59,44 @@ audioFiles.forEach((file) => {
     });
 });
 
+function playAudio(buffer) {
+  const sourceNodeLeft = audioContext.createBufferSource();
+  const sourceNodeRight = audioContext.createBufferSource();
+
+  // Split the stereo buffer into left and right channels
+  const leftChannel = buffer.getChannelData(0);
+  const rightChannel = buffer.getChannelData(1);
+
+  // Set buffers for left and right channels
+  sourceNodeLeft.buffer = buffer;
+  sourceNodeRight.buffer = buffer;
+
+  // Connect left and right source nodes to the audio destination
+  sourceNodeLeft.connect(audioContext.destination);
+  sourceNodeRight.connect(audioContext.destination);
+
+  // Start playback for left and right channels
+  sourceNodeLeft.start(0);
+  sourceNodeRight.start(0);
+}
+
 console.log(audioBuffers); // Log buffers array to console, in this instance the array has two buffers for each file as they are stereo
 
-const audioElements = Array.from(document.querySelectorAll('[class="audio"]'));
+/*---------------------------------
+Event listeners to trigger playback
+---------------------------------*/
+
+// const audioElements = Array.from(document.querySelectorAll('[class="audio"]'));
 const buttons = Array.from(document.querySelectorAll('[class="button"]'));
 const volumeFaders = Array.from(
   document.querySelectorAll('[class="fader__volume"]')
 );
 
-for (var i = 0; i < buttons.length; i++) {
-  (function (index) {
-    buttons[index].addEventListener("click", function (event) {
-      console.log(`You clicked ${event.target.attributes[1].nodeValue}`);
-      // Instead of playing audio elements, use some function to read data from the buffers *TODO*
-      audioElements[index].currentTime = 0;
-      audioElements[index].play();
-    });
-  })(i);
-}
+buttons.forEach((button, index) => {
+  button.addEventListener("click", () => {
+    playAudio(audioBuffers[index]);
+  });
+});
 
 for (var i = 0; i < volumeFaders.length; i++) {
   (function (index) {
