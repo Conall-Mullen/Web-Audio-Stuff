@@ -14,6 +14,9 @@ const audioFiles = [
   "samples/MR16_Rim_T1A.wav",
   "samples/MR16_Snr_T1S.wav",
   "samples/MR16_WoodBlock_C2S.wav",
+  "assets/Guitar fill 3.wav",
+  "assets/Piano Chord.wav",
+  "assets/Piano Chord 2.wav",
 ];
 let samples;
 const body = document.getElementsByTagName("body");
